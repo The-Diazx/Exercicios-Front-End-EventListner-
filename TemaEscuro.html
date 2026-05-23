@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema Escuro</title>
+    <style>
+        body {
+            background-color: #ffffff;
+            color: #333333;
+            transition: background-color 0.3s, color 0.3s;
+            font-family: sans-serif;
+            padding: 50px;
+        }        
+        body.dark-mode {
+            background-color: #121212;
+            color: #f0f0f0;
+        }
+
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        body.dark-mode button {
+            background-color: #f0f0f0;
+            color: #121212;
+        }
+    </style>
+</head>
+<body>
+
+    <h1> Bem vindo ao nosso site</h1>
+    <p> Este é um exemplo de página com tema escuro.</p>
+    <button id="btnTema">Alternar Tema</button>
+   <script>
+        const btnTema = document.getElementById('btnTema');
+        const body = document.body;
+
+        btnTema.addEventListener('click', function(){
+            body.classList.toggle('dark-mode');
+
+            if (body.classList.contains('dark-mode')) {
+                btnTema.textContent = "Modo Claro";
+            } else {
+                btnTema.textContent = "Modo Escuro";
+            }
+        });
+    </script>
+</body>
+</html>
