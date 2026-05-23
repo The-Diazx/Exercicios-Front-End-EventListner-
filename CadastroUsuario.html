@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Usuário</title>
+<style>
+        body { font-family: sans-serif; padding: 20px; }
+        .campo-senha { margin-bottom: 10px; }
+        input { padding: 8px; width: 250px; }
+        #forcaStatus { font-weight: bold; margin-top: 5px; }
+    </style>
+    </head>
+<body>
+    <h3>Cadastro de uma Senha Nova</h3>
+
+    <div class="Campo-Senha">
+        <input type="password" id="senha" placeholder="Digite sua senha">
+        </div>
+
+        <div id="forcaStatus">Status: -</div>
+
+        <script>
+            const senhaInput = document.getElementById('senha');
+            const forceStatus = document.getElementById('forcaStatus');
+
+            senhaInput.addEventListener('input', function(){
+                const valor = senhaInput.value;
+                let status = "";
+                let cor = "";
+                if (valor.length === 0 ){
+                    status = "-";
+                    cor = "black";
+                }else if (valor.length < 6){
+                    status = "Fraca";
+                    cor = "red";
+                }else if(valor.length < 10){
+                    status = "Média";
+                    cor = "orange";
+                }else{
+                    status = "Forte";
+                    cor = "green";
+                }
+                forceStatus.textContent = `Status: ${status}`;
+                forceStatus.style.color = cor;
+            });
+        </script>
+</body>
+</html>
