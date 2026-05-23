@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Controle de Estoque</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; }
+        .alerta { 
+            color: #d9534f; 
+            font-weight: bold; 
+            margin-top: 10px; 
+            padding: 10px; 
+            border: 1px solid #d9534f;
+            display: none; /* Escondido por padrão */
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Controle de Estoque</h3>
+    <label for="qtdEstoque">Quantidade disponível:</label>
+    <input type="number" id="qtdEstoque" placeholder="0">
+    
+    <div id="mensagemAlerta" class="alerta">
+        ⚠️ Atenção: Estoque baixo! Reposição necessária.
+    </div>
+
+    <script>
+        const inputEstoque = document.getElementById('qtdEstoque');
+        const divAlerta = document.getElementById('mensagemAlerta');
+
+        inputEstoque.addEventListener('input', function() {
+            const quantidade = parseInt(inputEstoque.value);
+
+            // Verifica se o campo não está vazio e se é menor que 10
+            if (!isNaN(quantidade) && quantidade < 10) {
+                divAlerta.style.display = 'block';
+            } else {
+                divAlerta.style.display = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
