@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Temperatura</title>
+    <style>
+        body { 
+            display: flex; justify-content: center; align-items: center; 
+            height: 100vh; transition: background-color 0.5s ease;
+            font-family: sans-serif; flex-direction: column; 
+        }
+        input { padding: 10px; font-size: 1.2em; text-align: center; }
+    </style>
+</head>
+<body>
+    <h1>Controle de Temperatura</h1>
+    <input type="number" id="tempInput" placeholder="Digite a temperatura em °C">
+    <p id="status"></p>
+    
+    <script> 
+
+    const input = document.getElementById('tempInput');
+    const body = document.body;
+    const status = document.getElementById('status');
+
+    input.addEventListener('input', function() {
+        const temp = parseFloat(input.value);
+        if (isNaN(temp)) {
+            body.style.backgroundColor = '#f0f0f0';
+            status.textContent = '';
+        } else if (temp < 15) {
+            body.style.backgroundColor = '#00f';
+            status.textContent = 'Frio';
+        } else if (temp >= 15 && temp <= 25) {
+            body.style.backgroundColor = '#0f0'; 
+            status.textContent = 'Temperatura Agradável';
+        } else {
+            body.style.backgroundColor = '#f00'; 
+            status.textContent = 'Calor';
+        }
+    });
+
+    </script>
+</body>
+</html>
