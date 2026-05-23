@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academinco</title>
+    <style>
+        body {
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 300px;
+        }
+
+    .error {
+        color: red;
+        font-size: 0.9em;
+    }
+    .success {
+        color: green;
+        font-size: 0.9em;
+    }
+    </style>
+</head>
+<body>
+    
+    <form id= "loginForm">
+        <h2>Login Academico</h2>
+        <input type="text" id="usuario" placeholder="Usuário" required>
+        <input type="password" id="senha" placeholder="senha" required>
+        <button type="submit">Login</button>
+        <div id="mensagem"></div>
+    </form>
+
+    <script>
+       
+        const form = document.getElementById('loginForm');
+        const mensagemDiv = document.getElementById('mensagem');
+
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+
+            const usuario = document.getElementById('usuario').value.trim();
+            const senha = document.getElementById('senha').value.trim();
+            if (usuario === "" || senha === "") {
+                mensagemDiv.textContent = "Por favor, preencha todos os campos.";
+                mensagemDiv.className = "error";
+            } else {
+                mensagemDiv.textContent = "Login bem-sucedido!";
+                mensagemDiv.className = "success";
+            }
+        });
+    </script>
+</body>
+</html>
