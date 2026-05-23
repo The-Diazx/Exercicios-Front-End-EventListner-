@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho de Compras</title>
+    <style>
+        .produto-card { border: 1px solid #ccc; padding: 20px; width: 300px; border-radius: 8px; font-family: sans-serif; }
+        .info { margin-bottom: 10px; }
+        .total { font-weight: bold; font-size: 1.2em; color: #2c3e50; margin-top: 15px; }
+    </style>
+</head>
+<body>
+    
+    <div class="Produtos-Card">
+        <h3>Produto: Camisa do Bahia</h3>
+        <div class= "info">Preço Unitário: R$ <span id = "valorUnitario"> 100,00 </span></div>
+        <label for = "quantidade">Quantidade: </label>
+        <input type = "number" id = "quantidade" min = "1" value = "1" style = "width: 50px;">
+
+        <div class="total"> Total: R$ <span id="ValorTotal"> 100,00 </span></div>
+
+        <script> 
+            const inputQtd = document.getElementById('quantidade');
+            const spanValorUnitario = document.getElementById('valorUnitario');
+            const spanValorTotal = document.getElementById('ValorTotal');
+
+            inputQtd.addEventListener('input', function(){
+                const preco= parseFloat(spanValorUnitario.textContent.replace(',', '.'));
+                const qtd = parseInt(inputQtd.value);
+                if(qtd > 0) {
+                    const total = preco * qtd;
+                    spanValorTotal.textContent = total.toFixed(2);
+                }else{
+                    spanValorTotal.textContent = "0,00";
+                }
+ });
+        </script>
+
+    </div>
+</body>
+</html>
