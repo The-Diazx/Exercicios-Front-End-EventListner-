@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banco</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .form-group { margin-bottom: 15px; }
+        #mensagem { font-weight: bold; margin-top: 10px; }
+        .erro { color: red; }
+        .sucesso { color: green; }
+    </style>
+</head>
+<body>
+    <h3>Transferência Bancária</h3>
+    <div class="form-group">
+        <label>Saldo disponível: R$ <span id="saldoAtual">500.00</span></label><br><br>
+        <input type="number" id="valorTransferencia" placeholder="Valor a transferir" step="0.01">
+        <button id="btnTransferir">Transferir</button>
+    </div>
+    <div id="mensagem"></div>
+
+    <script>
+        const saldoAtual = 500.00;
+        const btnTransferir = document.getElementById('btnTransferir');
+        const valorInput = document.getElementById('valorTransferencia');
+        const msgDiv = document.getElementById('mensagem');
+
+        btnTransferir.addEventListener('click', function() {
+            const valor = parseFloat(valorInput.value);
+
+            
+            if (isNaN(valor) || valor <= 0) {
+                msgDiv.textContent = "Erro: Digite um valor válido para transferência.";
+                msgDiv.className = "erro";
+                return;
+            }
+
+            
+            if (valor > saldoAtual) {
+                msgDiv.textContent = "Erro: Saldo insuficiente para esta operação.";
+                msgDiv.className = "erro";
+            } else {
+                
+                const confirmar = confirm(`Deseja confirmar a transferência de R$ ${valor.toFixed(2)}?`);
+                
+                if (confirmar) {
+                    msgDiv.textContent = "Sucesso: Transferência realizada com sucesso!";
+                    msgDiv.className = "sucesso";
+                    
+                } else {
+                    msgDiv.textContent = "Operação cancelada pelo usuário.";
+                    msgDiv.className = "";
+                }
+            }
+        });
+    </script>
+</body>
+</html>
