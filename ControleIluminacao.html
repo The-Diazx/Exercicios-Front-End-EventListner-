@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Iluminação</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; padding-top: 50px; }
+        
+        /* Div que simula a lâmpada */
+        #lampada {
+            width: 150px; height: 150px; border-radius: 50%;
+            border: 2px solid #333; margin-bottom: 20px;
+            background-color: rgb(255, 255, 200); /* Cor inicial */
+            transition: background-color 0.1s, box-shadow 0.1s;
+        }
+        
+        input[type=range] { width: 300px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="lampada"></div>
+    <input type="range" id="controleLuz" min="0" max="100" value="100">
+    <p>intensidade: <span id="valor">100</span>%</p>
+    <script> 
+        const controle = document.getElementById('controleLuz');
+        const lampada = document.getElementById('lampada');
+        const valorTexto = document.getElementById('valor');
+
+        controle.addEventListener('input', function(){
+            const intensidade = parseInt(controle.value, 10);
+            valorTexto.textContent = intensidade;
+
+            const brilho = intensidade * 2.55;
+
+            lampada.style.backgroundColor = `rgb(${brilho}, ${brilho}, ${brilho / 2})`;
+            lampada.style.boxShadow = intensidade > 20 ? `0 0 ${intensidade / 2}px rgba(255, 255, 150, 0.8)` : 'none';
+        });
+    </script>
+</body>
+</html>
