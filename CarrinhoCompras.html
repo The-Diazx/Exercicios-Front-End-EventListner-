@@ -12,7 +12,7 @@
 </head>
 <body>
     
-    <div class="Produtos-Card">
+    <div class="produto-card">
         <h3>Produto: Camisa do Bahia</h3>
         <div class= "info">Preço Unitário: R$ <span id = "valorUnitario"> 100,00 </span></div>
         <label for = "quantidade">Quantidade: </label>
@@ -30,7 +30,7 @@
                 const qtd = parseInt(inputQtd.value);
                 if(qtd > 0) {
                     const total = preco * qtd;
-                    spanValorTotal.textContent = total.toFixed(2);
+                    spanValorTotal.textContent = total.toFixed(2).replace('.', ',');
                 }else{
                     spanValorTotal.textContent = "0,00";
                 }

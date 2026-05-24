@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de IMC</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; }
+        .input-group { margin-bottom: 15px; }
+        input { padding: 8px; width: 150px; }
+        #resultadoIMC { font-weight: bold; font-size: 1.2em; color: #2980b9; }
+    </style>
+</head>
+<body>
+    <h3>Calculadora de IMC</h3>
+    <div class="input-group">
+        <label>Peso (Kg): </label><br>
+        <input type="number" id="peso" placeholder="Ex: 70" step="0.1"> 
+    </div>
+    <div class="input-group">
+        <label>Altura (m): </label><br>
+        <input type="number" id="altura" placeholder="Ex: 1.75" step="0.01">
+    </div>
+    <p> Seu IMC é: <span id="resultadoIMC">0</span> </p>
+
+    <script> 
+    const pesoInput = document.getElementById('peso'); 
+    const alturaInput = document.getElementById('altura');
+    const resultadoDisplay = document.getElementById('resultadoIMC');
+
+    function calcularIMC() {
+        const peso = parseFloat(pesoInput.value);
+        const altura = parseFloat(alturaInput.value);
+
+        if(peso > 0 && altura > 0 ){
+            const imc = peso / (altura * altura);
+            resultadoDisplay.textContent = imc.toFixed(2);
+        }else{
+            resultadoDisplay.textContent = '0';
+        }
+        }
+        pesoInput.addEventListener('input', calcularIMC);
+        alturaInput.addEventListener('input', calcularIMC);
+    </script>
+</body>
+</html>
