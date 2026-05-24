@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma de Cursos Online</title>
+    <style>
+        .container { font-family: sans-serif; display: flex; gap: 20px; align-items: flex-start; }
+        .miniatura {
+            width: 200px; height: 120px; background-color: #333;
+            color: white; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; border-radius: 8px; transition: transform 0.2s;
+        }
+        .miniatura:hover { transform: scale(1.05); }
+
+        #areaVideo { width: 400px; height: 225px; background: #000; display: flex; align-items: center; justify-content: center; color: white; }
+        video { width: 100%; height: 100%; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id = "thumbAula" class="miniatura">
+            <span> Clique para iniciar a aula</span>
+        </div>
+        <div id="areaVideo">
+            <p>Video sera carregado aqui</p>
+        </div>
+    </div>
+
+    <script>
+        const miniatura = document.getElementById('thumbAula');
+        const areaVideo = document.getElementById('areaVideo');
+
+        miniatura.addEventListener('click', function() {
+            areaVideo.innerHTML = '<video controls autoplay><source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">Seu navegador não suporta o elemento de vídeo.</video>';
+
+            miniatura.style.opacity = '0.5';
+            miniatura.style.pointerEvents = 'none';
+        });
+
+
+    </script>
+    
+</body>
+</html>
