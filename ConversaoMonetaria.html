@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Conversor de Moedas</title>
+    <style>
+        body { font-family: sans-serif; padding: 30px; }
+        .conversor-card { border: 1px solid #ccc; padding: 20px; width: 300px; border-radius: 8px; }
+        input { padding: 10px; width: 100%; box-sizing: border-box; margin-top: 5px; }
+        .resultado { margin-top: 15px; font-weight: bold; color: #27ae60; }
+    </style>
+</head>
+<body>
+
+<div class="conversor-card">
+    <h3>Conversor BRL para USD</h3>
+    <label for="valorReal">Valor em Reais (R$):</label>
+    <input type="number" id="valorReal" placeholder="Ex: 100.00" step="0.01">
+    
+    <div class="resultado">
+        Valor em Dólar: US$ <span id="valorDolar">0.00</span>
+    </div>
+</div>
+
+<script>
+    const inputReal = document.getElementById('valorReal');
+    const spanDolar = document.getElementById('valorDolar');
+    
+    const taxaCambio = 5.00;
+
+    inputReal.addEventListener('input', function() {
+        const reais = parseFloat(inputReal.value);
+
+        if (!isNaN(reais) && reais >= 0) {
+            const dolar = reais / taxaCambio;
+            spanDolar.textContent = dolar.toFixed(2);
+        } else {
+            spanDolar.textContent = "0.00";
+        }
+    });
+</script>
+
+</body>
+</html>
