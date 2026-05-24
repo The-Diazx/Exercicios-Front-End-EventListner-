@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Notificações</title>
+    <style>
+        .container { font-family: sans-serif; padding: 50px; position: relative; }
+        
+   
+        #iconeMensagem {
+            font-size: 2em; cursor: pointer; color: #3498db;
+            display: inline-block; padding: 10px;
+        }
+
+        
+        #caixaNotificacao {
+            display: none; 
+            position: absolute; top: 100px; left: 50px;
+            width: 250px; padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="iconeMensagem">✉️ Mensagens</div>
+        <div id="caixaNotificacao">
+            <strong>Notificações:</strong>
+            <ul>
+                <li>Você tem 3 novas mensagens.</li>
+                <li>Alguém curtiu sua foto.</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const icone = document.getElementById('iconeMensagem');
+        const caixa = document.getElementById('caixaNotificacao');
+
+        
+        icone.addEventListener('mouseenter', function() {
+            caixa.style.display = 'block';
+        });
+
+        
+        icone.addEventListener('mouseleave', function() {
+            caixa.style.display = 'none';
+        });
+
+        
+        caixa.addEventListener('mouseenter', function() {
+            caixa.style.display = 'block';
+        });
+
+        caixa.addEventListener('mouseleave', function() {
+            caixa.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
