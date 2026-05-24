@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda da Clínica</title>
+    <style>
+        .container { font-family: sans-serif; padding: 20px; }
+        .grid-horarios { display: flex; gap: 10px; margin-top: 15px; }
+        
+        .horario { 
+            padding: 10px 20px; border: 1px solid #3498db; 
+            border-radius: 5px; cursor: pointer; color: #3498db;
+        }
+        
+        .horario.selecionado { 
+            background-color: #3498db; color: white; font-weight: bold; 
+        }
+        
+        #confirmacao { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Selecione um horário disponível:</h3>
+        <div class="grid-horarios">
+            <div class="horario">09:00</div>
+            <div class="horario">10:00</div>
+            <div class="horario">14:00</div>
+            <div class="horario">15:00</div>
+        </div>
+        <p id="confirmacao">Nenhum horário selecionado.</p>
+    </div>
+
+    <script>
+        const horarios = document.querySelectorAll('.horario');
+        const confirmacao = document.getElementById('confirmacao');
+
+        horarios.forEach(horario => {
+            horario.addEventListener('click', function() {
+                horarios.forEach(h => h.classList.remove('selecionado'));
+
+                this.classList.add('selecionado');
+
+                
+                confirmacao.textContent = `Horário selecionado: ${this.textContent}`;
+            });
+        });
+    </script>
+</body>
+</html>
