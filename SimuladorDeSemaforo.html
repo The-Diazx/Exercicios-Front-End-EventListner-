@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Semáforo Inteligente</title>
+    <style>
+        .container { display: flex; flex-direction: column; align-items: center; gap: 20px; font-family: sans-serif; }
+        .semaforo { background: #333; padding: 20px; border-radius: 10px; display: flex; flex-direction: column; gap: 10px; }
+        .luz { width: 60px; height: 60px; border-radius: 50%; background-color: #555; }
+        
+        .verde.ativo { background-color: #2ecc71; box-shadow: 0 0 20px #2ecc71; }
+        .amarelo.ativo { background-color: #f1c40f; box-shadow: 0 0 20px #f1c40f; }
+        .vermelho.ativo { background-color: #e74c3c; box-shadow: 0 0 20px #e74c3c; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Simulador de Semáforo</h3>
+        <div class="semaforo">
+            <div id="luzVermelha" class="luz vermelho"></div>
+            <div id="luzAmarela" class="luz amarelo"></div>
+            <div id="luzVerde" class="luz verde"></div>
+        </div>
+        <button id="btnIniciar">Iniciar Simulação</button>
+    </div>
+
+    <script>
+        const luzes = [
+            document.getElementById('luzVermelha'),
+            document.getElementById('luzAmarela'),
+            document.getElementById('luzVerde')
+        ];
+        const btnIniciar = document.getElementById('btnIniciar');
+        let indiceAtual = 0;
+
+        btnIniciar.addEventListener('click', function() {
+            
+            btnIniciar.disabled = true;
+
+            setInterval(() => {
+                
+                luzes.forEach(luz => luz.classList.remove('ativo'));
+                
+                luzes[indiceAtual].classList.add('ativo');
+                
+                indiceAtual = (indiceAtual + 1) % luzes.length;
+            }, 2000); 
+        });
+    </script>
+</body>
+</html>
