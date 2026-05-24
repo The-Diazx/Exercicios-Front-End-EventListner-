@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Avaliação</title>
+    <style>
+        .estrela { font-size: 2em; cursor: pointer; color: #ccc; }
+        .estrela.selecionada { color: #f1c40f; }
+        #mensagem { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h3>Como foi seu atendimento Hoje?</h3>
+    <div id="containerEstrelas">
+        <span class="estrela" data-valor="1">&#9733;</span>
+        <span class="estrela" data-valor="2">&#9733;</span>
+        <span class="estrela" data-valor="3">&#9733;</span>
+        <span class="estrela" data-valor="4">&#9733;</span>
+        <span class="estrela" data-valor="5">&#9733;</span>
+    </div>
+
+    <div id = "mensagem"> Avalie Clicando nas Estrelas </div>
+
+    <script>
+        const estrelas = document.querySelectorAll('.estrela');
+        const mensagem = document.getElementById('mensagem');
+
+        estrelas.forEach(estrela => {
+            estrela.addEventListener('click', function() {
+                const valor = parseInt(this.getAttribute('data-valor'));
+
+                
+                estrelas.forEach(e => e.classList.remove('selecionada'));
+
+                for (let i = 0; i < valor; i++) {
+                    estrelas[i].classList.add('selecionada');
+                }
+                mensagem.textContent = `Você avaliou com ${valor} estrela(s)!`;
+            });
+        });
+    </script>
+</body>
+</html>
