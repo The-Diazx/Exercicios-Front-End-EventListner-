@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Votação Representante</title>
+    <style>
+        body { font-family: sans-serif; padding: 20px; }
+        .candidato { margin-bottom: 10px; padding: 10px; border: 1px solid #ddd; width: 250px; }
+        button { cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <h3>Escolha seu Representante:</h3>
+    <div id="listaCandidatos">
+        <div class="candidato">
+            Ana Silva - Votos: <span id="votos-ana">0</span>
+            <button class="btn-votar" data-candidato="ana">Votar</button>
+        </div>
+        <div class="candidato">
+            Bruno Souza - Votos: <span id="votos-bruno">0</span>
+            <button class="btn-votar" data-candidato="bruno">Votar</button>
+        </div>
+        <div class="candidato">
+            Carla Dias - Votos: <span id="votos-carla">0</span>
+            <button class="btn-votar" data-candidato="carla">Votar</button>
+        </div>
+    </div>
+
+    <script>
+        
+        const contagem = { ana: 0, bruno: 0, carla: 0 };
+        const botoes = document.querySelectorAll('.btn-votar');
+
+        botoes.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const candidato = this.getAttribute('data-candidato');
+                
+                
+                contagem[candidato]++;
+            
+                document.getElementById(`votos-${candidato}`).textContent = contagem[candidato];
+            });
+        });
+    </script>
+</body>
+</html>
