@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Player de Música</title>
+    <style>
+        .player { font-family: sans-serif; border: 1px solid #ccc; padding: 20px; width: 300px; border-radius: 10px; }
+        .controles { margin-top: 15px; display: flex; gap: 10px; align-items: center; }
+        button { padding: 8px 15px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="player">
+    <h3>Minha Música</h3>
+    <audio id="meuAudio">
+        <source src="musica.mp3" type="audio/mpeg">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <div class="controles">
+        <button id="btnPlay">Play</button>
+        <button id="btnPause">Pause</button>
+        <input type="range" id="volumeBar" min="0" max="1" step="0.1" value="1">
+    </div>
+</div>
+
+<script>
+    const audio = document.getElementById('meuAudio');
+    const btnPlay = document.getElementById('btnPlay');
+    const btnPause = document.getElementById('btnPause');
+    const volumeBar = document.getElementById('volumeBar');
+
+    btnPlay.addEventListener('click', function() {
+        audio.play();
+    });
+
+    btnPause.addEventListener('click', function() {
+        audio.pause();
+    });
+
+    volumeBar.addEventListener('input', function() {
+        audio.volume = volumeBar.value;
+    });
+</script>
+
+</body>
+</html>
